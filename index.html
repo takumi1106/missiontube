@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セーブデータ選択</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./scss/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&family=M+PLUS+Rounded+1c&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">MissionTube</h1>
+    </header>
+    <main class="top">
+        <div class="top__inner">
+        <h2 class="top__sub-title subT">作業を進めて動画時間を貯めよう！</h2>
+        <p class="top__text Text">セーブデータを選んでください</p>
+        <section class="top__save-list save-list">
+
+            <article class="top__save save">
+                <button type="button" class="save__slot" id="save1">
+                    <strong>セーブデータ1</strong>
+                    <p class="save-job save__job">設定されていません</p>
+                    <p class="save-type save__type"></p>
+                </button>
+            </article>
+
+            <article class="top__save save">
+                <button type="button" class="save__slot empty" id="save2">
+                    <strong>セーブデータ2</strong>
+                    <p class="save-job save__job">設定されていません</p>
+                    <p class="save-type"></p>
+                </button>
+            </article>
+
+            <article class="top__save save">
+                <button type="button" class="save__slot empty" id="save3">
+                    <strong>セーブデータ3</strong>
+                    <p class="save-job save__job">設定されていません</p>
+                    <p class="save-type"></p>
+                </button>
+            </article>
+            <button type="button" class="save__delete-btn" id="delete-save-btn">
+                削除
+            </button>
+        </section>
+
+    </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

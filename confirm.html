@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再生リスト確認</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./scss/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&family=M+PLUS+Rounded+1c&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">MissionTube</h1>
+    </header>
+    <main class="confirm">
+        <div class="confirm__inner">
+            <h2 class="confirm__sub-title subT">再生リストを確認してください</h2>
+            <p>※再生順を並び替えできます。</p>
+
+            <section>
+                <ul class="confirm__playlist" id="playlist"></ul>
+            </section>
+
+            <section>
+                <label class="confirm__check">
+                    <input type="checkbox" id="repeat">
+                        繰り返し再生
+                </label>
+            </section>
+
+            <div class="confirm__button-list">
+                <button type="button" class="back-btn confirm__back-btn" id="confirm-back-btn">
+                    戻る
+                </button>
+
+                <button class="next-btn confirm__next-btn" type="button" id="start-btn">
+                    開始
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

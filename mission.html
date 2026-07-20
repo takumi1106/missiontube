@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ミッション選択</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./scss/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&family=M+PLUS+Rounded+1c&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">MissionTube</h1>
+    </header>
+    <main class="mission">
+        <div class="mission__inner">
+            <h2 class="mission__sub-title subT" for="mission-name">ミッションを作成してください</h2>
+            <form id="mission-form" class="mission__form">
+                <input type="text" id="type-input" class="mission__input Input" placeholder="例）ヘッダーのデザインを完成">
+
+                <div class="mission__button-list">
+                    <button type="submit" class="mission__next-btn">
+                        次へ
+                    </button>
+                </div>
+            </form>
+
+        <section>
+            <h2 class="mission__hisT subT">過去のミッション</h2>
+            <ul id="mission-history"></ul>
+
+            <button type="button" class="mission__delete-mode-btn" id="mission-delete-btn">
+                削除
+            </button>
+        </section>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

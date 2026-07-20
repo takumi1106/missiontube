@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作業中</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./scss/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&family=M+PLUS+Rounded+1c&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="player">
+
+        <section class="video-area">
+            <div class="video-wrapper">
+                <div id="video-player"></div>
+
+                <div id="video-overlay">
+                    <p id="video-overlay-text">
+                        時間切れです<br>次のミッションを設定してください
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="player__inner">
+            <section class="time-area player__time-area">
+                <p>残り時間：<span id="mission-time-display">--</span></p>
+            </section>
+
+            <section class="mission-area player__mission-area">
+                <h2 class="player__label">現在のミッション：</h2>
+                <p id="mission-display">ミッションを読み込み中...</p>
+            </section>
+
+            <button class="player__completion" type="button" id="mission-complete-btn">
+                ミッション完了
+            </button>
+
+            <section class="next-mission-area" hidden>
+                <h2 class="player__label player__label-mission">次のミッションを設定してください</h2>
+
+                <input class="Input" type="text" id="next-mission-name" placeholder="例：メインビジュアルを作る">
+
+                <div class="player__button-list">
+                <button class="player__finish" type="button" id="end-play-btn">
+                    終了
+                </button>
+                <button class="player__next" type="button" id="next-mission-btn">
+                    開始
+                </button>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="./script.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+
+</html>
