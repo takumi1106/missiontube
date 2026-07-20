@@ -751,7 +751,7 @@ function searchSampleVideos(keyword) {
         recommendedVideosSection.hidden = true;
     }
 
-    fetch("./sample.json")
+    fetch(`/api/search?q=${encodeURIComponent(keyword)}`)
         .then(function (response) {
             if (!response.ok) {
                 throw new Error("sample.jsonを読み込めませんでした。");
