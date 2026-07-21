@@ -214,43 +214,6 @@ body{
     }
 }
 
-.video-wrapper {
-    position: relative;
-    width: 640px;
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-
-    #video-player,
-    #video-player iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    #video-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 9999;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-
-        &.is-locked {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            cursor: not-allowed;
-        }
-    }
-}
-
 // =================================================================
 //  type.html
 // =================================================================
@@ -873,4 +836,46 @@ body{
 
 #next-mission-name{
     width: 100%;
+}
+
+.video-area {
+    width: 100%;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+
+    #video-player,
+    #video-player iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    #video-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+
+        &.is-locked {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            cursor: not-allowed;
+        }
+    }
 }
