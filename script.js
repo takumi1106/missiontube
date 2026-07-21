@@ -713,12 +713,40 @@ if (confirmBackBtn) {
 }
 
 // =========================
-// JSONから動画を検索
+// 動画を検索
 // =========================
 const videoSearchInput = document.getElementById("video-search");
 const searchVideoBtn = document.getElementById("search-video-btn");
 const videoList = document.getElementById("video-list");
 const selectedVideoList = document.getElementById("selected-video-list");
+
+function formatYouTubeDuration(duration) {
+    if (!duration) {
+        return "不明";
+    }
+
+    const match = duration.match(
+        /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/
+    );
+
+    if (!match) {
+        return "不明";
+    }
+
+    const hours = Number(match[1] || 0);
+    const minutes = Number(match[2] || 0);
+    const seconds = Number(match[3] || 0);
+
+    if (hours > 0) {
+        return `${hours}時間${minutes}分${seconds}秒`;
+    }
+
+    if (minutes > 0) {
+        return `${minutes}分${seconds}秒`;
+    }
+
+    return `${seconds}秒`;
+}
 
 function searchVideo() {
     const keyword = videoSearchInput.value.trim();
@@ -785,7 +813,7 @@ function searchSampleVideos(keyword) {
                 id: item.id.videoId,
                 title: item.snippet.title,
                 thumbnail: item.snippet.thumbnails.medium.url,
-                duration: item.snippet.duration
+                duration: item.duration
             };
 
             const card = document.createElement("div");
@@ -802,7 +830,7 @@ function searchSampleVideos(keyword) {
 
             const duration = document.createElement("p");
             duration.classList.add("video-card__duration");
-            duration.textContent = `動画時間${videoData.duration}`;
+            duration.textContent = `動画時間 ${formatYouTubeDuration(videoData.duration)}`;
 
             card.appendChild(img);
             card.appendChild(title);
