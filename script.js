@@ -564,7 +564,7 @@ if (recommendedVideoList) {
 
     const duration = document.createElement("p");
     duration.classList.add("video-card__duration");
-    duration.textContent = `動画時間 ${video.duration}`;
+    duration.textContent = `動画時間 ${formatYouTubeDuration(video.duration)}`;
 
     card.appendChild(img);
     card.appendChild(title);
