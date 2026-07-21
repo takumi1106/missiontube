@@ -961,6 +961,7 @@ if (missionDisplay) {
     }
 
     let missionTimer = null;
+    let isLeavingPlayerPage = false;
 
     missionDisplay.textContent =
         mission || "ミッションが設定されていません";
@@ -990,6 +991,21 @@ if (missionDisplay) {
             missionTimer = null;
         }
     }
+
+    function cleanupPlayerPage() {
+        isLeavingPlayerPage = true;
+        stopTimer();
+
+        if (
+            youtubePlayer &&
+            typeof youtubePlayer.pauseVideo === "function"
+        ) {
+            youtubePlayer.pauseVideo();
+        }
+    }
+
+    window.addEventListener("pagehide", cleanupPlayerPage);
+    window.addEventListener("beforeunload", cleanupPlayerPage);
 
     function lockVideo(message) {
         if (
@@ -1036,7 +1052,8 @@ if (missionDisplay) {
     }
 
     function startTimer() {
-    stopTimer();
+        stopTimer();
+        isLeavingPlayerPage = false;
 
     // すでに時間切れならタイマーを開始しない
     if (missionRemainingTime <= 0) {
@@ -1058,6 +1075,11 @@ if (missionDisplay) {
     }
 
     missionTimer = setInterval(function () {
+        if (isLeavingPlayerPage) {
+            stopTimer();
+            return;
+        }
+
         missionRemainingTime--;
 
         if (missionRemainingTime <= 0) {
@@ -1096,30 +1118,32 @@ if (missionDisplay) {
     showMissionTime();
     startTimer();
 
-    missionCompleteBtn.addEventListener("click", function () {
-        stopTimer();
+    if (missionCompleteBtn) {
+        missionCompleteBtn.addEventListener("click", function () {
+            stopTimer();
 
-        missionCompleteBtn.disabled = true;
+            missionCompleteBtn.disabled = true;
 
-        lockVideo("次のミッションを入力してください");
+            lockVideo("次のミッションを入力してください");
 
-        missionRemainingTime += rewardTime;
+            missionRemainingTime += rewardTime;
 
-        localStorage.setItem(
-            "missionRemainingTime",
-            missionRemainingTime
-        );
+            localStorage.setItem(
+                "missionRemainingTime",
+                String(missionRemainingTime)
+            );
 
-        showMissionTime();
+            showMissionTime();
 
-        if (nextMissionArea) {
-            nextMissionArea.hidden = false;
-        }
+            if (nextMissionArea) {
+                nextMissionArea.hidden = false;
+            }
 
-        if (nextMissionNameInput) {
-            nextMissionNameInput.focus();
-        }
-    });
+            if (nextMissionNameInput) {
+                nextMissionNameInput.focus();
+            }
+        });
+    }
 
     if (nextMissionBtn) {
         nextMissionBtn.addEventListener("click", function () {
@@ -1155,7 +1179,7 @@ if (missionDisplay) {
 
     if (endPlayBtn) {
         endPlayBtn.addEventListener("click", function () {
-            stopTimer();
+            cleanupPlayerPage();
 
             if (
                 youtubePlayer &&
@@ -1177,15 +1201,7 @@ if (missionDisplay) {
 
     if (playerBackBtn) {
         playerBackBtn.addEventListener("click", function () {
-            stopTimer();
-
-            if (
-                youtubePlayer &&
-                typeof youtubePlayer.pauseVideo === "function"
-            ) {
-                youtubePlayer.pauseVideo();
-            }
-
+            cleanupPlayerPage();
             location.href = "confirm.html";
         });
     }
